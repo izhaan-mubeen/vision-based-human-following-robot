@@ -121,16 +121,21 @@ This creates a feedback-based closed-loop control system.
 
 ```
 vision-based-human-following-robot/
-├── config/                  # ROS2 parameter files (kp, conf, timeout)
-├── launch/                  # Launch file to start all nodes together
+
 ├── LICENSE
-├── media/                   # Demo GIF, detection screenshots, ROS2 graph
+├── media/
+│   ├── demo.gif
+│   ├── ros_graph.png
+│   ├── yolo_detection_left.png
+│   └── yolo_detection_right.png
+│
 ├── README.md
 ├── requirements.txt
+│
 └── src/
-    ├── stage1.py            # Standalone YOLO + OpenCV test (no ROS2)
-    ├── stage2_detector.py   # ROS2 detection node
-    └── stage3_follower.py   # ROS2 controller node
+    ├── stage1.py
+    ├── stage2_detector.py
+    └── stage3_follower.py
 ```
 
 ---
@@ -148,7 +153,6 @@ cd vision-based-human-following-robot
 
 ```bash
 sudo apt install python3-venv ros-$ROS_DISTRO-turtlesim ros-$ROS_DISTRO-rqt-image-view
-sudo apt install ros-$ROS_DISTRO-launch-ros
 pip install -r requirements.txt
 ```
 
@@ -198,16 +202,23 @@ Run Controller Node:
 ```bash
 python3 src/stage3_follower.py
 ```
+---
 
-### Optional: Launch Everything at Once
+## Demonstration
 
-A launch file is included to start TurtleSim, the detector, and the
-controller together with a single command:
+### YOLOv8 Human Detection
 
-```bash
-ros2 launch launch/follow.launch.py
-```
+![YOLO Detection](media/yolo_detection_right.png)
 
+
+### ROS2 Node Communication
+
+![ROS Graph](media/ros_graph.png)
+
+
+### System Demo
+
+![Demo](media/demo.gif)
 ---
 
 ## Results
